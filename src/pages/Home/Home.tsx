@@ -3,45 +3,23 @@ import Modal from "components/UI/Modal";
 import VideoPlayer from "components/VideoPlayer";
 import Button from "components/UI/Button";
 import { MessagesType } from "types";
+import useUtils from "hooks/useHooks";
 
 const Home = () => {
-  const [open, setOpen] = useState(true);
-  const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(false);
-  const [showByeMessage, setShowByeMessage] = useState<boolean>(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const [messages, setMessages] = useState<MessagesType>({
-    bye: "",
-    welcome: "",
-  });
-
-  const handleClickOK = () => {
-    videoRef.current?.play();
-    setOpen(false);
-    setTimeout(() => {
-      setShowWelcomeMessage(true);
-      videoRef.current?.pause();
-    }, 5000);
-  };
-
-  const handleContinue = () => {
-    setShowWelcomeMessage(false);
-    videoRef.current?.play();
-    setTimeout(() => {
-      setShowByeMessage(true);
-      setShowWelcomeMessage(false);
-    }, 5000);
-  };
-
-  const handleVideoEnd = () => {
-    setMessages({
-      bye: "",
-      welcome: "",
-    });
-    setShowByeMessage(false);
-    setShowWelcomeMessage(false);
-    setOpen(true);
-  };
+  const {
+    open,
+    messages,
+    videoRef,
+    setOpen,
+    setMessages,
+    handleClickOK,
+    showByeMessage,
+    showErrorMessage,
+    handleContinue,
+    handleVideoEnd,
+    showWelcomeMessage,
+    setShowErrorMessage,
+  } = useUtils();
 
   return (
     <div className="text-2xl">
@@ -71,6 +49,8 @@ const Home = () => {
         messages={messages}
         setMessages={setMessages}
         handleClickOK={handleClickOK}
+        showErrorMessage={showErrorMessage}
+        setShowErrorMessage={setShowErrorMessage}
       />
     </div>
   );

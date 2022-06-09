@@ -9,6 +9,8 @@ const Modal = ({
   setMessages,
   messages,
   handleClickOK,
+  showErrorMessage,
+  setShowErrorMessage,
 }: ModalProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -16,9 +18,15 @@ const Modal = ({
       ...prev,
       [`${name}`]: value,
     }));
+    value ? setShowErrorMessage(false) : setShowErrorMessage(true);
   };
 
   const enable = () => messages.bye !== "" && messages.welcome !== "";
+
+  const handleShowWelcomeError = () =>
+    showErrorMessage && messages.welcome === "";
+
+  const handleShowByeError = () => showErrorMessage && messages.bye === "";
 
   return open ? (
     <>
@@ -38,49 +46,55 @@ const Modal = ({
                 </span>
               </Button>
             </div>
-            <div className="relative p-6 flex-auto">
-              <Input
-                type="text"
-                id="welcome"
-                name="welcome"
-                placeholder="Entrez vos messages"
-                required
-                onChange={handleChange}
-                labelName="Message de Bienvenu"
-              />
+            <form>
+              <div className="relative p-6 flex-auto">
+                <Input
+                  type="text"
+                  id="welcome"
+                  name="welcome"
+                  placeholder="Entrez vos messages"
+                  required
+                  showError={handleShowByeError()}
+                  onChange={handleChange}
+                  labelName="Message de Bienvenu"
+                />
 
-              <Input
-                type="text"
-                id="bye"
-                name="bye"
-                required
-                onChange={handleChange}
-                placeholder="Entrez vos messages"
-                labelName="Message d'adieu"
-              />
-            </div>
-            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-              <Button
-                transparent
-                textColor="white"
-                onClick={() => setOpen(false)}
-                customClasses="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              >
-                Fermer
-              </Button>
-              <Button
-                onClick={(e) => {
-                  if (enable()) {
-                    handleClickOK();
-                  } else {
-                    e.preventDefault();
-                  }
-                }}
-                disabled={!enable()}
-              >
-                OK
-              </Button>
-            </div>
+                <Input
+                  type="text"
+                  id="bye"
+                  name="bye"
+                  required
+                  showError={handleShowWelcomeError()}
+                  onChange={handleChange}
+                  placeholder="Entrez vos messages"
+                  labelName="Message d'adieu"
+                />
+              </div>
+              <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                <Button
+                  transparent
+                  textColor="white"
+                  onClick={() => setOpen(false)}
+                  customClasses="text-gray-900 bg-white py-3 border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                >
+                  Fermer
+                </Button>
+                <Button
+                  onClick={(e) => {
+                    if (enable()) {
+                      handleClickOK();
+                    } else {
+                      setShowErrorMessage(true);
+                      e.preventDefault();
+                    }
+                  }}
+                  // disabled={!enable()}
+                  type="submit"
+                >
+                  OK
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
