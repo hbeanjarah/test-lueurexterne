@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import Modal from "components/UI/Modal";
 import VideoPlayer from "components/VideoPlayer";
 import Button from "components/UI/Button";
-import { MessagesType } from "types";
 import useUtils from "hooks/useHooks";
 
 const Home = () => {

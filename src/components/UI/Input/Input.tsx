@@ -10,8 +10,6 @@ interface InputProps
 }
 
 const Input: FC<InputProps> = ({ labelName, showError, ...props }) => {
-  console.log("Input errror", showError);
-
   return (
     <div>
       <label
