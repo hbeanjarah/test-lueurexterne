@@ -1,5 +1,4 @@
 import React from "react";
-import { MessagesType } from "types";
 interface VideoProps {
   videoRef: React.MutableRefObject<HTMLVideoElement | null>;
   handleVideoEnd: () => void;
