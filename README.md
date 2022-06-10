@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Video Player
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This project was built with React and Tailwind Css. The aim of this project is to play video in react application without using plugins and add some interaction to users.
+> Live demo [_here_](https://bejewelled-druid-296376.netlify.app/). <!-- If you have the project hosted somewhere, include the link here. -->
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Setup without Docker](#setup-without-docker)
+- [Setup with Docker](#setup-with-docker)
+- [Contact](#contact)
+<!-- * [License](#license) -->
 
-### `yarn start`
+## General Information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Build design system with Tailwind Css
+- Use Netlify as web hosting
+<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `yarn test`
+- React
+- Tailwind css
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup without Docker
 
-### `yarn build`
+```shell
+git clone https://github.com/hbeanjarah/test-lueurexterne.git
+cd test-lueurexterne
+yarn install
+yarn start
+```
+## Setup without Docker
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```shell
+git clone https://github.com/hbeanjarah/test-lueurexterne.git
+cd test-lueurexterne
+docker-compose up
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+navigate to your favourite browser on http://localhost:3000
+## Contact
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Created by [@hbeanjarah]
 
-### `yarn eject`
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source and available under the [... License](). -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- You don't have to include all sections - just the one's relevant to your project -->
